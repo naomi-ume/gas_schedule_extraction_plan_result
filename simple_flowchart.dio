@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="L_NodiOgFQpjzgN6-_PM" name="ページ1">
-        <mxGraphModel dx="998" dy="1208" grid="0" gridSize="10" guides="1" tooltips="1" connect="0" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+        <mxGraphModel dx="499" dy="604" grid="0" gridSize="10" guides="1" tooltips="1" connect="0" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -12,13 +12,13 @@
                         <mxPoint x="146" y="210" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="3" value="開始" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#000000;fillColor=#FCE0FF;" parent="1" vertex="1">
+                <mxCell id="3" value="開始" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#000000;fillColor=#FCE0FF;strokeColor=none;" parent="1" vertex="1">
                     <mxGeometry x="96" y="80" width="100" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="" style="edgeStyle=none;html=1;fontColor=#000000;fillColor=#d80073;strokeColor=#000000;" parent="1" source="4" target="6" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="対象期間の予定抽出・集計" style="whiteSpace=wrap;html=1;fillColor=#ABF9FF;fontColor=#000000;strokeWidth=2;" parent="1" vertex="1">
+                <mxCell id="4" value="対象期間の予定抽出・集計" style="whiteSpace=wrap;html=1;fillColor=#ABF9FF;fontColor=#000000;strokeWidth=2;strokeColor=none;" parent="1" vertex="1">
                     <mxGeometry x="86" y="220" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="10" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" parent="1" source="6" edge="1">
@@ -26,7 +26,7 @@
                         <mxPoint x="146" y="500" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="6" value="集計結果を予定タブに記載" style="whiteSpace=wrap;html=1;fillColor=#ABF9FF;fontColor=#000000;strokeWidth=2;" parent="1" vertex="1">
+                <mxCell id="6" value="集計結果を予定タブに記載" style="whiteSpace=wrap;html=1;fillColor=#ABF9FF;fontColor=#000000;strokeWidth=2;strokeColor=none;" parent="1" vertex="1">
                     <mxGeometry x="86" y="360" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="11" value="終了" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;strokeColor=#F4EBEB;fontColor=#000000;fillColor=#FCE0FF;" parent="1" vertex="1">
@@ -100,7 +100,7 @@
                 <mxCell id="40" value="" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#000000;" edge="1" parent="1" source="38" target="39">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" value="&lt;font color=&quot;#000000&quot;&gt;開始&lt;/font&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#FCE0FF;" vertex="1" parent="1">
+                <mxCell id="38" value="&lt;font color=&quot;#000000&quot;&gt;開始&lt;/font&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#FCE0FF;strokeColor=none;" vertex="1" parent="1">
                     <mxGeometry x="591" y="80" width="100" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="44" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;entryX=0.505;entryY=-0.033;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="39" target="66">
@@ -108,7 +108,7 @@
                         <mxPoint x="646" y="390" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="39" value="&lt;font color=&quot;#000000&quot;&gt;毎月、予定・実績の&lt;br&gt;区分１:区分2:が0の行を削除する&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;fillColor=#ABF9FF;strokeWidth=2;" vertex="1" parent="1">
+                <mxCell id="39" value="&lt;font color=&quot;#000000&quot;&gt;毎月、予定・実績の&lt;br&gt;区分１:区分2:が0の行を削除する&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;fillColor=#ABF9FF;strokeWidth=2;strokeColor=none;" vertex="1" parent="1">
                     <mxGeometry x="581" y="220" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="47" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1" target="26">
@@ -152,7 +152,7 @@
                 <mxCell id="65" value="毎月１回" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#FF8000;" vertex="1" parent="1">
                     <mxGeometry x="606" y="15" width="70" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="66" value="終了" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;strokeColor=#F4EBEB;fontColor=#000000;fillColor=#FCE0FF;" vertex="1" parent="1">
+                <mxCell id="66" value="終了" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;strokeColor=none;fontColor=#000000;fillColor=#FCE0FF;" vertex="1" parent="1">
                     <mxGeometry x="591" y="400" width="100" height="60" as="geometry"/>
                 </mxCell>
             </root>
