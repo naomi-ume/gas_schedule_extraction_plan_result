@@ -1,36 +1,66 @@
-function plan_recordTimeEntries(start, end, sheetName){
+// recordTimeEntries 関数は、カレンダーから工数データを収集してスプレッドシートに記録する関数
+//指定された日付の範囲（start から end まで）において、カレンダーからイベントを取得し、それを指定されたスプレッドシートのシートに記録するためのもの
+function result_recordTimeEntries(start, end, sheetName) {
+
+// 取得した開始日 (start) と終了日 (end) の日付を整形。日付オブジェクト (Date クラスのインスタンス) を作成し、それぞれの日付の時間部分を設定。
   startDate = new Date(start);
   endDate = new Date(end);
+  //startDate の時間部分を00:00:00に設定。
   startDate.setHours(0,0,0,0);
-  endDate.setHours(24,0,0,0)
+  //endDate の時間部分を24:00:00に設定。ただし、JavaScriptでは24:00:00は翌日の00:00:00を表すため、終了日は翌日の開始時刻
+  endDate.setHours(24,0,0,0);
 
-  const events = CalendarApp.getCalendarById(gCalendarId).getEvents(startDate, endDate); //カレンダーからイベント取得
-  const dataToRecord = {};  //区分１と２が同じ行を合算して格納
-  for (let i = 0; i < events.length; i++){
-    let event = events[i];
-    let title = event.getTitle();
-    if(title.indexOf(':') === -1 && title.indexOf('移動') === -1){
+  // 開始日と終了日を設定（1か月前から1か月後まで）
+  var events = CalendarApp.getCalendarById(gCalendarId).getEvents(startDate, endDate);
+   // CalendarApp.getCalendarById(gCalendarId): gCalendarId で指定されたカレンダーの ID を使用して、Google Calendar サービスのインスタンスを取得。.getEvents(startDate, endDate): カレンダーサービスの getEvents メソッドを呼び出して、指定された日付範囲 (startDate から endDate まで) 内のイベントを取得。その期間内の予定やイベントに関する情報が events という変数に格納される。
+
+  // 区分1と区分2が同じ値の行を合算するためのデータを格納するオブジェクト。各行のデータを区分1と区分2の組み合わせで識別し、同じ区分1と区分2を持つ行のデータを合算するためのもの
+  var dataToRecord = {}; 
+
+    //このループでは、i という変数を 0 から始め、events 配列の長さ未満の条件を満たす限り、繰り返し処理が行われる。i++ はループごとに i を1ずつ増加させます。これにより、events 配列内の各要素に順番にアクセス。i++ は i を1ずつ増加させるためのショートカット。
+  // for ループの開始を示します。i という変数を 0 から始め、events 配列の長さ（イベントの総数）未満の条件を満たす限りループを続ける。各ループで i の値が 1 ずつ増加
+  for (var i = 0; i < events.length; i++) {
+    //各ループで、現在の i の値に対応する events 配列内のイベントオブジェクトを取得し、変数 event に格納します。events[i] は events 配列の i 番目の要素を取得する操作。 
+    var event = events[i];
+    //現在のループで処理しているイベント（event）のタイトルを取得し、変数 title に格納します。getTitle() メソッドは、そのイベントオブジェクトのタイトルを取得するためのメソッドです。この部分の目的は、events 配列内の各イベントに対して、それぞれのタイトルを取得し、変数 title に格納すること
+    var title = event.getTitle();
+
+    //タイトルに':'か'移動'が含まれていない場合はスキップ。indexOf メソッドは、指定された文字列が見つからなかった場合に -1 を返す。title 文字列において : もしくは '移動' が含まれていない場合に trueになりcontinue。
+    if (title.indexOf(':') === -1 && title.indexOf('移動') === -1) {
       continue;
     }
-    let startTime = event.getStartTime();
-    let endTime = event.getEndTime();
-    let duration;
-    duration = (endTime - startTime) / (1000*60*60);//イベント時間の算出
+    //event オブジェクトからイベントの開始時刻を取得し、変数 startTime に格納しています。getStartTime() メソッドは、event オブジェクトからそのイベントの開始時刻を返す
+    var startTime = event.getStartTime();
+    //event オブジェクトからイベントの終了時刻を取得し、変数 endTime に格納しています。getEndTime() メソッドは、event オブジェクトからそのイベントの終了時刻を返す
+    var endTime = event.getEndTime();
+    //変数 duration を宣言しています。この変数は後で時間差を計算して格納するためにある
+    var duration;
+    duration = (endTime - startTime) / (1000 * 60 * 60); // 時間を計算（ミリ秒から時間に変換）。1秒は1000ミリ秒
 
-    if (title.indexOf(':') >= 0 && title.split(':').length >= 2){
-      const titleParts = title.split(':');
-       var group1 = titleParts[0]; //区分１
-       var group2 = titleParts[1]; //区分２
-       var note = titleParts.slice(2).join(':'); //区分２以降を切り取りコロンで結合してnoteに格納
+    // タイトルに':'が含まれている場合は、タイトルをパースしてグループ1、グループ2、ノートを抽出
+    //もし title に ':' が含まれているならば（indexOf メソッドは、指定された文字列が最初に見つかる位置のインデックスを返す。もし見つからない場合は -1 を返す
+    //もし title を ':' で分割した結果の配列の長さが2以上ならば。
+    if (title.indexOf(':') >= 0
+    && title.split(':').length >= 2) {
+    //title を ':' で分割し、結果を titleParts という配列に格納
+      var titleParts = title.split(':');
+    //titleParts の最初の要素を group1 として取得
+      var group1 = titleParts[0];
+    //titleParts の２番目の要素を group２ として取得
+      var group2 = titleParts[1];
+    //titleParts の3番目以降の要素を取り出し、（JSでは０から始まる）それらを再度 ':' で結合して、note という変数に格納。
+      var note = titleParts.slice(2).join(':'); // 3つ目以降の要素をノートにまとめる
     }
-    else if (title.indexOf('移動') >=0){
+    // タイトルに'移動'が含まれている場合は、特別仕様
+    else if (title.indexOf('移動') >= 0) {
       var group1 = '移動';
-      var group2 = ' ';
-      var note = title;//3つ目以降の要素をnoteへ格納
+      var group2 = ' ';     // ★note:いずれは電車、車、徒歩等で区分ごとに分けたい
+      var note = title; // 3つ目以降の要素をノートにまとめる
     }
+
     // 区分2が空の場合、group2を'*'として処理
     if (group2 === '') {
-    var group2 = '*';
+      group2 = '*';
     }
 
     // 時間ID配列のMAX値を算出
@@ -79,9 +109,14 @@ function plan_recordTimeEntries(start, end, sheetName){
       data.duration[dayId] += dataToRecord[key].duration[dayId];
     }
   }
-  //gSheetId で指定されたスプレッドシートのIDを使用して、SpreadsheetApp クラスの openById メソッドでスプレッドシートを開き、その後 getSheetByName メソッドで指定されたシート名（gSheetNamePlan）のシートを取得。取得したシートは spreadsheet 変数に代入
-  var spreadsheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNamePlan);
-  /* ヘッダー行を設定。getRange メソッドを使用してスプレッドシート上のセルを指定し、そのセルに対して setValue メソッドを使用して値を設定。スプレッドシートの1行目の1列目（A列1行目）に「区分1」という値を設定,1行目の2列目（B列1行目）に「区分2」という値を設定,スプレッドシートの1行目の3列目（C列1行目）に「合計」という値を設定*/
+  //gSheetId で指定されたスプレッドシートのIDを使用して、SpreadsheetApp クラスの openById メソッドでスプレッドシートを開き、その後 getSheetByName メソッドで指定されたシート名（gSheetNameResult）のシートを取得。取得したシートは spreadsheet 変数に代入
+  var spreadsheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNameResult);
+  // ヘッダー行を設定。getRange メソッドを使用してスプレッドシート上のセルを指定し、そのセルに対して setValue メソッドを使用して値を設定。スプレッドシートの1行目の1列目（A列1行目）に「区分1」という値を設定,1行目の2列目（B列1行目）に「区分2」という値を設定,スプレッドシートの1行目の3列目（C列1行目）に「合計」という値を設定
+  
+  var headerCol = 1;//スプレッドシートの１列目
+  var headerRawDirection1 = 1;//スプレッドシート１行目
+  var headerRawDirection2 = 2;//スプレッドシート２行目
+  var headerRawDirectionTotal = 3;//スプレッドシート３行目
   spreadsheet.getRange(headerCol, headerRawDirection1).setValue('区分1');
   spreadsheet.getRange(headerCol, headerRawDirection2).setValue('区分2');
   spreadsheet.getRange(headerCol, headerRawDirectionTotal).setValue('合計');
@@ -113,9 +148,9 @@ function plan_recordTimeEntries(start, end, sheetName){
         break;
       }
       
-      // ヘッダ行が開始日になるまで繰り返し
-      // 日付を比較する方法はこんな方法しかないの？→formatDate, getDange, getValueの3つを重複で駆使を避け、一つの関数で比較したい。比較だけに新たに変数を作るのも避けたいとの意図。
-      //Utilities.formatDate メソッドは、日付を指定された形式にフォーマットするためのメソッド。スプレッドシートの1行目（ヘッダ行）の col 列目のセルから日付を取得し、'JST' タイムゾーンで 'yyyy/MM/dd' 形式にフォーマット。フォーマットされた日付は headerDate に格納。day を'JST' タイムゾーンで 'yyyy/MM/dd' 形式にフォーマットし、その結果を targetDate に格納。フォーマットされた日付が一致するかどうかを比較。もし一致すれば、break; で無限ループを終了。これにより、特定の日付がスプレッドシートのヘッダ行で見つかると、列の探索終了。
+      /* ヘッダ行が開始日になるまで繰り返し
+       日付を比較する方法はこんな方法しかないの？→formatDate, getDange, getValueの3つを重複で駆使を避け、一つの関数で比較したい。比較だけに新たに変数を作るのも避けたいとの意図。
+      //Utilities.formatDate メソッドは、日付を指定された形式にフォーマットするためのメソッド。スプレッドシートの1行目（ヘッダ行）の col 列目のセルから日付を取得し、'JST' タイムゾーンで 'yyyy/MM/dd' 形式にフォーマット。フォーマットされた日付は headerDate に格納。day を'JST' タイムゾーンで 'yyyy/MM/dd' 形式にフォーマットし、その結果を targetDate に格納。フォーマットされた日付が一致するかどうかを比較。もし一致すれば、break; で無限ループを終了。これにより、特定の日付がスプレッドシートのヘッダ行で見つかると、列の探索終了。*/
       if(Utilities.formatDate(spreadsheet.getRange(1, col).getValue(), 'JST', 'yyyy/MM/dd')
       === Utilities.formatDate(day, 'JST', 'yyyy/MM/dd'))
       {
@@ -123,8 +158,8 @@ function plan_recordTimeEntries(start, end, sheetName){
       }
     }
     
-    // 最終的な集計結果をスプレッドシートに記録
-    //dataToRecord オブジェクトの各プロパティに対して反復処理を行う。key には各プロパティのキーが順番に代入。各プロパティに対応する値（data）を取得します。この data には、オブジェクトの各プロパティに関する情報や集計結果が格納。
+    /* 最終的な集計結果をスプレッドシートに記録
+    dataToRecord オブジェクトの各プロパティに対して反復処理を行う。key には各プロパティのキーが順番に代入。各プロパティに対応する値（data）を取得します。この data には、オブジェクトの各プロパティに関する情報や集計結果が格納。*/
     for (var key in dataToRecord) {
       var data = dataToRecord[key];
 
@@ -148,12 +183,14 @@ function plan_recordTimeEntries(start, end, sheetName){
           row: 　　　row の値がここで文字列に組み込まれる。例えば、もし row が 4 ならば、この部分は文字列 '=SUM(D4' 
           ':': 文字列として範囲の区切りを表現
           row: また、row の値がここで文字列に組み込まれる。例えば、もし row が 4 ならば、この部分は文字列 '4)' 
-          ')': 文字列として SUM 関数の終了括弧を表現 */
+          ')': 文字列として SUM 関数の終了括弧を表現*/
           spreadsheet.getRange(row, 3).setValue('=SUM(D'+row+':'+row+')');
           //スプレッドシート上の新しい行の特定のセルに、data.duration[i] の値を書き込む処理。data.duration 配列の各要素が新しい行の col 列目に順番に書き込まれ、スプレッドシート上にデータが反映。
           spreadsheet.getRange(row, col).setValue(data.duration[i]);
           break;
         }
+        
+        // データがある場合は更新
         //もしスプレッドシートの row 行目に既にデータが存在する場合、かつそのデータが data.group1 と data.group2 と一致する場合、値を更新
         if(spreadsheet.getRange(row, 1).getValue().toString() === data.group1
         && spreadsheet.getRange(row, 2).getValue().toString() === data.group2)
@@ -166,5 +203,4 @@ function plan_recordTimeEntries(start, end, sheetName){
     }
   }
 }
-
 
