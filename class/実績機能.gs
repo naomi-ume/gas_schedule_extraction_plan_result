@@ -141,8 +141,8 @@ function result_recordTimeEntries(start, end, sheetName) {
       {
         //空のセルが見つかった場合、その列の後に新しい列を挿入
         spreadsheet.insertColumnAfter(col);
-        //挿入された新しい列の1行目に、計算された日付 day を設定
-        spreadsheet.getRange(1, col).setValue(day);
+        //挿入された新しい列の1行目に、計算された日付 day をスプレッドシートの書式を日付にして設定
+        spreadsheet.getRange(1, col).setValue(day).setNumberFormat('yyyy/MM/dd');
         //条件(日付の一致)が満たされたら、break; を使用して無限ループを終了
         break;
       }
