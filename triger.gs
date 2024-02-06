@@ -15,4 +15,13 @@ function setTrigger() {
     .create();
 
   Logger.log('予定抽出を２４時間毎に繰り返すトリガーが設定されました。');
+
+  //　実績機能を24時間に１回行うトリガーの設定。
+   ScriptApp.newTrigger('result_recordTimeEntries')
+    .timeBased()
+    .atHour(0)  // 24時 (夜中)
+    .everyDays(1)  // 毎日実行
+    .create();
+
+  Logger.log('実績抽出を２４時間毎に繰り返すトリガーが設定されました。');
 }
