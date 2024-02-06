@@ -1,3 +1,4 @@
+// カレンダーから予定の工数データを収集してスプレッドシートに記録
 function plan_recordTimeEntries(start, end, sheetName){
   startDate = new Date(start);
   endDate = new Date(end);
