@@ -1,6 +1,4 @@
-
 // カレンダーから実績の工数データを収集してスプレッドシートに記録
-
 function result_recordTimeEntries(start, end, sheetName) {
 
 // 取得した開始日 (start) と終了日 (end) の日付を整形。日付オブジェクト (Date クラスのインスタンス) を作成し、それぞれの日付の時間部分を設定。
@@ -13,7 +11,6 @@ function result_recordTimeEntries(start, end, sheetName) {
 
   // 開始日と終了日を設定（1か月前から1か月後まで）
   var events = CalendarApp.getCalendarById(gCalendarId).getEvents(startDate, endDate);
-
    /* CalendarApp.getCalendarById(gCalendarId): gCalendarId で指定されたカレンダーの ID を使用して、Google Calendar サービスのインスタンスを取得。.getEvents(startDate, endDate): カレンダーサービスの getEvents メソッドを呼び出して、指定された日付範囲 (startDate から endDate まで) 内のイベントを取得。その期間内の予定やイベントに関する情報が events の変数に格納。*/
 
   // 区分1と区分2が同じ値の行を合算するためのデータを格納するオブジェクト。各行のデータを区分1と区分2の組み合わせで識別し、同じ区分1と区分2を持つ行のデータを合算する。
@@ -23,7 +20,6 @@ function result_recordTimeEntries(start, end, sheetName) {
   //for ループの開始を示します。i という変数を 0 から始め、events 配列の長さ（イベントの総数）未満の条件を満たす限りループを続ける。各ループで i の値が 1 ずつ増加
   for (var i = 0; i < events.length; i++) {
     //各ループで、現在の i の値に対応する events 配列内のイベントオブジェクトを取得し、変数 event に格納。events[i] は events 配列の i 番目の要素を取得する操作。 
-
     var event = events[i];
     //現在のループで処理しているイベント（event）のタイトルを取得し、変数 title に格納します。getTitle() メソッドは、そのイベントオブジェクトのタイトルを取得するためのメソッドです。この部分の目的は、events 配列内の各イベントに対して、それぞれのタイトルを取得し、変数 title に格納すること
     var title = event.getTitle();
@@ -129,10 +125,8 @@ function result_recordTimeEntries(start, end, sheetName) {
   var col;                
   //startDate を基に新しい Date オブジェクト today を作成
   var today = new Date(startDate);
-
   /*maxTimeId 回ループする for ループが開始。このループは、日数（maxTimeId）分だけ繰り返される。
   ループ変数 i を初期化する。この変数はループ内で使用され、初期値として 0 が代入。ループが実行される条件を指定。i が maxTimeId より小さい場合にループが続く。ループの各反復が終わると、i の値を 1 増加させる。これにより、i の値が次の反復で使用される。*/
-
   for(var i = 0; i < maxTimeId; i++)
   {
     //新しい Date オブジェクト day を作成。startDate から i 日進めた日付を day に設定。day の時刻を0時0分0秒０ミリ秒に設定。これにより、日付だけが残る。
@@ -140,17 +134,15 @@ function result_recordTimeEntries(start, end, sheetName) {
     day.setDate(startDate.getDate()+i);
     day.setHours(0,0,0,0);
     //col の初期値を 4 に設定し、for (;;) {...} で無限ループを開始。このループは条件を指定せずに永遠に続く。
-    for (col=4;;col++)
+    for (col= startCol;;col++)
     {
       // ヘッダ行が''の場合は新たにヘッダを追加。spreadsheet から1行目かつ現在の col 列のセルの値が空 ('') かどうかを確認
       if(spreadsheet.getRange(1, col).getValue() === '')
       {
         //空のセルが見つかった場合、その列の後に新しい列を挿入
         spreadsheet.insertColumnAfter(col);
-
         //挿入された新しい列の1行目に、計算された日付 day をスプレッドシートの書式を日付にして設定
         spreadsheet.getRange(1, col).setValue(day).setNumberFormat('yyyy/MM/dd');
-
         //条件(日付の一致)が満たされたら、break; を使用して無限ループを終了
         break;
       }

@@ -1,4 +1,4 @@
-
+/*
 // 集計結果から先月分をコピー。
 //指定された2つのスプレッドシート間でデータをコピーするための関数。fromSheetName: コピー元のシート名toSheetName: コピー先のシート名end: 特定の条件に基づいてコピーする列の終了位置
 function copyData(fromSheetName, toSheetName, end)
@@ -29,7 +29,7 @@ console.log("Cell value:", cellValue, typeof cellValue);
 
   // 特定の範囲の列削除。第1引数 4 は削除を開始する列のインデックス。この場合、4列目から削除が開始。第2引数 endCol - 3 は削除する列の数。endCol はループで特定された終了列の値で、それから3を引いてる。削除される列の数が計算されている
   fromsheet.deleteColumns(4, endCol - 3);
-}
+}*/
 /*
 // wrapper関数の使用　現在の月。addSumCol 関数が gSheetNamePlan シートからデータを取得し、それを gSheetNameResult シートに追加処理を行いながら書き込む
 function addSumColWrapper() {

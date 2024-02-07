@@ -15,3 +15,4 @@ var headerCol = 1;//スプレッドシートの１列目
 var headerRawDirection1 = 1;//スプレッドシート１行目
 var headerRawDirection2 = 2;//スプレッドシート２行目
 var headerRawDirectionTotal = 3;//スプレッドシート３行目
+var startCol = 4;//スプレッドシート４列目
