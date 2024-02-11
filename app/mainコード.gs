@@ -29,7 +29,7 @@ console.log("Cell value:", cellValue, typeof cellValue);
 
   // 特定の範囲の列削除。第1引数 4 は削除を開始する列のインデックス。この場合、4列目から削除が開始。第2引数 endCol - 3 は削除する列の数。endCol はループで特定された終了列の値で、それから3を引いてる。削除される列の数が計算されている
   fromsheet.deleteColumns(4, endCol - 3);
-}*/
+}
 /*
 // wrapper関数の使用　現在の月。addSumCol 関数が gSheetNamePlan シートからデータを取得し、それを gSheetNameResult シートに追加処理を行いながら書き込む
 function addSumColWrapper() {
@@ -176,8 +176,10 @@ var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() +
   result_recordTimeEntries(startDate, yesterday, gSheetNameResult);
   //今日から endDate までの期間内の予定データが gSheetNamePlan(予定) から集計。
   plan_recordTimeEntries(today, endDate, gSheetNamePlan);
-  //既存トリガーの削除と、24時間に１回予定抽出を実行するトリガーをセット
+  //既存トリガーの削除と、24時間に１回予実抽出を実行するトリガーをセット
   setTrigger();
+  /*予定から１ヶ月分の日毎のデータを抽出し、予定(日毎)タブに情報を書き込む。
+  planDays_copyData(fromSheetName, toSheetName, end)*/
   /*もしstartDateが1日の場合、新しい月の最初の日の場合に以下の処理を実行
   if(startDate.getDate() === 1)
   {

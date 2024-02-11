@@ -3,7 +3,7 @@ function plan_recordTimeEntries(start, end, sheetName){
   startDate = new Date(start);
   endDate = new Date(end);
   startDate.setHours(0,0,0,0);
-  endDate.setHours(24,0,0,0)
+  endDate.setHours(24,0,0,0);
 
   const events = CalendarApp.getCalendarById(gCalendarId).getEvents(startDate, endDate); //カレンダーからイベント取得
   const dataToRecord = {};  //区分１と２が同じ行を合算して格納
@@ -11,7 +11,7 @@ function plan_recordTimeEntries(start, end, sheetName){
     let event = events[i];
     let title = event.getTitle();
     if(title.indexOf(':') === -1 && title.indexOf('移動') === -1){
-      continue;
+      continue; //タイトルに:がなく移動の文字もない場合は抽出対象にならずスキップされる。
     }
     let startTime = event.getStartTime();
     let endTime = event.getEndTime();
@@ -101,7 +101,7 @@ function plan_recordTimeEntries(start, end, sheetName){
     day.setDate(startDate.getDate()+i);
     day.setHours(0,0,0,0);
     //col の初期値を 4 に設定し、for (;;) {...} で無限ループを開始。このループは条件を指定せずに永遠に続く。
-    for (col=4;;col++)
+    for (col= startCol;;col++)
     {
       // ヘッダ行が''の場合は新たにヘッダを追加。spreadsheet から1行目かつ現在の col 列のセルの値が空 ('') かどうかを確認
       if(spreadsheet.getRange(1, col).getValue() === '')
