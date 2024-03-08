@@ -11,7 +11,7 @@ function result_recordTimeEntries(start, end, sheetName) {
 
   // 開始日と終了日を設定（1か月前から1か月後まで）
   var events = CalendarApp.getCalendarById(gCalendarId).getEvents(startDate, endDate);
-   /* CalendarApp.getCalendarById(gCalendarId): gCalendarId で指定されたカレンダーの ID を使用して、Google Calendar サービスのインスタンスを取得。.getEvents(startDate, endDate): カレンダーサービスの getEvents メソッドを呼び出して、指定された日付範囲 (startDate から endDate まで) 内のイベントを取得。その期間内の予定やイベントに関する情報が events の変数に格納。*/
+   /* CalendarApp.getCalendarById(gCalendarId): gCalendarId で指定されたカレンダーの ID を使用して、Google Calendar サービスのインスタンスを取得。.getEvents(startDate, endDate): カレンダーサービスの getEvents メソッドを呼び出して、指定された日付範囲 (startDate から endDate まで) 内のイベントを取得。その期間内の実績やイベントに関する情報が events の変数に格納。*/
 
   // 区分1と区分2が同じ値の行を合算するためのデータを格納するオブジェクト。各行のデータを区分1と区分2の組み合わせで識別し、同じ区分1と区分2を持つ行のデータを合算する。
   var dataToRecord = {}; 
