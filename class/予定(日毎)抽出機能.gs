@@ -1,10 +1,9 @@
-/*
-// 集計結果から先月分をコピー。
+// 予定タブから先月分の予定を１ヶ月分コピー。
 //指定された2つのスプレッドシート間でデータをコピーするための関数。fromSheetName: コピー元のシート名toSheetName: コピー先のシート名end: 特定の条件に基づいてコピーする列の終了位置
-function copyData(fromSheetName, toSheetName, end)
+function planDays_copyData(fromSheetName, toSheetName, end)
 {
   var fromsheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNamePlan);//コピー元の予定シートを開く
-  var tosheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNameResult);//コピー先の実績シートを開く
+  var tosheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNamePlanDays);//コピー先の予定(日毎)シートを開く
   var endCol = 4;//列の終了の初期値を４で設定
 
   for(var i=5;;i++)//i を初期値 5 で定義。ループ毎にインクリメント
@@ -128,70 +127,3 @@ function delNaNRow()
     }
   }
 }
-
-
-/* 予定、実績スケジュール削除機能（月が切り替わるタイミングで0の行を削除）
-function deleteZeroRows() {
-  // 予定タブのシートを取得 
-  var planSheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNamePlan);
-  
-  // 実績タブのシートを取得
-  var resultSheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNameResult); 
-
-   月が翌月に切り替わるタイミングで前月の各行の合計が0の行を削除
-  deleteRowsWithZeroSum(planSheet, 1);
-  deleteRowsWithZeroSum(resultSheet, 1);
-}
-
-// 各行の合計が0の場合に行を削除
-function deleteRowsWithZeroSum(sheet, columnStartIndex) {
-  var lastRow = sheet.getLastRow();
-  
- for (var i = lastRow; i > 1; i--) {
-    // 区分1と区分2の合計値の列を指定
-   var sumFormula = '=SUM(' + sheet.getRange(i, columnStartIndex + 2).getA1Notation() + ':' + sheet.getRange(i, sheet.getLastColumn()).getA1Notation() + ')';
-    var sum = sheet.getRange(i, columnStartIndex + 2).setFormula(sumFormula).getValue();
-
-    // 合計が0の場合は行を削除
-    if (sum === 0) {
-      sheet.deleteRow(i);
-    }
-  }
-}
-*/
-
-
-// 工数抽出システムメイン
-function mainMethod()
-{  //日時の管理
-var today = new Date() //現在の日時
-var yesterday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1); //today から1日前
-var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1); //today から1日後
-  /* 対象期間の予定を集計
-  today の年、月、日に対して gEditSpan７日 を引いた日付を新しいDateオブジェクトとして生成。現在の日付から gEditSpan7日前の日付が startDate に設定。*/
-  var startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - gEditSpan);
-  //today の年、月、日に対して gGetSpan7日を足した日付を新しい Date オブジェクトとして生成。現在の日付から gGetSpan７日後の日付が endDate に設定
-  var endDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + gGetSpan);
-  /*recordTimeEntries関数でstartDate（予定の対象期間の開始日）、yesterday（前日）、およびgSheetName Result（結果を記録するスプレッドシート　実績が引数。この関数は、指定された期間内の予定データを集計して gSheetNameResult（実績） に記録*/
-  result_recordTimeEntries(startDate, yesterday, gSheetNameResult);
-  //今日から endDate までの期間内の予定データが gSheetNamePlan(予定) から集計。
-  plan_recordTimeEntries(today, endDate, gSheetNamePlan);
-  //既存トリガーの削除と、24時間に１回予実抽出を実行するトリガーをセット
-  setTrigger();
-
-  /*予定から１ヶ月分の日毎のデータを抽出し、予定(日毎)タブに情報を書き込む。
-  planDays_copyData(fromSheetName, toSheetName, end)*/
-  /*もしstartDateが1日の場合、新しい月の最初の日の場合に以下の処理を実行
-  if(startDate.getDate() === 1)
-  {
-    //today（今日の日付）から年を取得。today から月を取得し1引いている。これは先月の月。日にちを0に指定。JavaScriptのDateオブジェクトでは、月の日にちが1から始まるため、指定した月の0日は前月の最終日。0, 0, 0, 0: 時間、分、秒、ミリ秒を0で指定。これは日付の部分だけを考慮してる。lastMonth には先月の最終日の日付が設定。例えば、今が2022年2月15日だった場合、lastMonth には2022年1月31日の日付が設定される。
-    var lastMonth = new Date(today.getFullYear(), today.getMonth() - 1, 0, 0, 0, 0, 0);
-    //gSheetNameToMonthResult 実績シートの先月の結果を lastMonth を基に集計。集計結果が gSheetNameResultDays実績(集計)シートに書き込まれる。
-    addSumColWrapper(gSheetNameResult, gSheetNameTabulationResult, lastMonth);
-    //gSheetNameToMonthResult シートの先月の結果を lastMonth を基にコピー。コピーされた結果が gSheetNameLastMonth実績(先月) シートに書き込まれる。
-    copyData(gSheetNameToMonthResult, gSheetNameLastMonth, lastMonth);
-    //gSheetNameResult には先月の結果が集計され、gSheetNameLastMonth には同じ結果がコピーされる。このような処理は、毎月初めに先月の結果を集計し、それを別のシートに保存しておくためのもの
-    
-  }*/
-}
-

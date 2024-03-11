@@ -3,7 +3,7 @@ function plan_recordTimeEntries(start, end, sheetName){
   startDate = new Date(start);
   endDate = new Date(end);
   startDate.setHours(0,0,0,0);
-  endDate.setHours(24,0,0,0)
+  endDate.setHours(24,0,0,0);
 
   const events = CalendarApp.getCalendarById(gCalendarId).getEvents(startDate, endDate); //カレンダーからイベント取得
   const dataToRecord = {};  //区分１と２が同じ行を合算して格納
@@ -11,7 +11,7 @@ function plan_recordTimeEntries(start, end, sheetName){
     let event = events[i];
     let title = event.getTitle();
     if(title.indexOf(':') === -1 && title.indexOf('移動') === -1){
-      continue;
+      continue; //タイトルに:がなく移動の文字もない場合は抽出対象にならずスキップされる。
     }
     let startTime = event.getStartTime();
     let endTime = event.getEndTime();
@@ -101,15 +101,15 @@ function plan_recordTimeEntries(start, end, sheetName){
     day.setDate(startDate.getDate()+i);
     day.setHours(0,0,0,0);
     //col の初期値を 4 に設定し、for (;;) {...} で無限ループを開始。このループは条件を指定せずに永遠に続く。
-    for (col=4;;col++)
+    for (col= startCol;;col++)
     {
       // ヘッダ行が''の場合は新たにヘッダを追加。spreadsheet から1行目かつ現在の col 列のセルの値が空 ('') かどうかを確認
-      if(spreadsheet.getRange(1, col).getValue() === '')
+      if(spreadsheet.getRange(headerRawDateStart, col).getValue() === '')
       {
         //空のセルが見つかった場合、その列の後に新しい列を挿入
         spreadsheet.insertColumnAfter(col);
         //挿入された新しい列の1行目に、計算された日付 day を設定
-        spreadsheet.getRange(1, col).setValue(day).setNumberFormat('yyyy/MM/dd');
+        spreadsheet.getRange(headerRawDateStart, col).setValue(day).setNumberFormat('yyyy/MM/dd');
         //条件(日付の一致)が満たされたら、break; を使用して無限ループを終了
         break;
       }
@@ -117,7 +117,7 @@ function plan_recordTimeEntries(start, end, sheetName){
       // ヘッダ行が開始日になるまで繰り返し
       // 日付を比較する方法はこんな方法しかないの？→formatDate, getDange, getValueの3つを重複で駆使を避け、一つの関数で比較したい。比較だけに新たに変数を作るのも避けたいとの意図。
       //Utilities.formatDate メソッドは、日付を指定された形式にフォーマットするためのメソッド。スプレッドシートの1行目（ヘッダ行）の col 列目のセルから日付を取得し、'JST' タイムゾーンで 'yyyy/MM/dd' 形式にフォーマット。フォーマットされた日付は headerDate に格納。day を'JST' タイムゾーンで 'yyyy/MM/dd' 形式にフォーマットし、その結果を targetDate に格納。フォーマットされた日付が一致するかどうかを比較。もし一致すれば、break; で無限ループを終了。これにより、特定の日付がスプレッドシートのヘッダ行で見つかると、列の探索終了。
-      if(Utilities.formatDate(spreadsheet.getRange(1, col).getValue(), 'JST', 'yyyy/MM/dd')
+      if(Utilities.formatDate(spreadsheet.getRange(headerRawDateStart, col).getValue(), 'JST', 'yyyy/MM/dd')
       === Utilities.formatDate(day, 'JST', 'yyyy/MM/dd'))
       {
         break;
@@ -130,10 +130,10 @@ function plan_recordTimeEntries(start, end, sheetName){
       var data = dataToRecord[key];
 
       // 既にデータがある場合は更新、無い場合は追加。row を2から始め、無限ループを行う。新しい行を探し続ける。
-      for (var row=2;;row++)
+      for (var row= startRaw;;row++)
       {
         // データがない場合は追加。スプレッドシートの row 行目の1列目（A列）のセルが空であるかどうかを確認。
-        if(spreadsheet.getRange(row, 1).getValue() === '')
+        if(spreadsheet.getRange(row, headerCol).getValue() === '')
         {
           //spreadsheet.appendRow([data.group1, data.group2, data.duration[i]]);
           // 現在の行に1行追加。
