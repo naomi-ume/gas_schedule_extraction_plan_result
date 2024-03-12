@@ -180,7 +180,10 @@ var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() +
   setTrigger();
 
   //予定から１ヶ月分の日毎のデータを抽出し、予定(日毎)タブに情報を書き込む。
+  var fromSheetName = "予定"; // コピー元のシート名を指定
+  var toSheetName = "予定(日毎)"; // コピー先のシート名を指定
   planDays_copyData(fromSheetName, toSheetName)
+   
   /*もしstartDateが1日の場合、新しい月の最初の日の場合に以下の処理を実行
   if(startDate.getDate() === 1)
   {

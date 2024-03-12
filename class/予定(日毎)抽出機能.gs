@@ -4,10 +4,56 @@ function planDays_copyData(fromSheetName, toSheetName)
 {
   var fromsheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNamePlan);//コピー元の予定シートを開く
   var tosheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNamePlanDays);//コピー先の予定(日毎)シートを開く
+  var today = new Date();//現在の日付の取得
+  var firstDayOfLastMonth = new Date(today.getFullYear(), today.getMonth() -4,1);//先月の初日を取得
+  var lastDayOfLastMonth = new Date(today.getFullYear(), today.getMonth(), 0);//先月の最後の日を取得
+  var data = fromsheet.getDataRange().getValues();//コピー元のデータ取得
+  var endCol = findEndColumn(data);//終了位置を見つける
+  var lastRow = tosheet.getLastRow();//コピー先の最終行を取得
 
-  for(var i=5;;i++)//i を初期値 5 で定義。ループ毎にインクリメント
-  {
-    // 予定シートの行ヘッダが空白の場合。行ヘッダが空であるか、あるいはセルの日付が end よりも後の場合、ループを抜ける。同じセルの値を日付として解釈し、その日付が end よりも後の日付であるかどうかを比較。
+  // 先月分の予定をコピー
+  for (var i = 0; i < data.length; i++) {
+    var rowDate = new Date(data[i][0]); // 予定シートの日付列をDate型に変換
+    if (rowDate >= firstDayOfLastMonth && rowDate <= lastDayOfLastMonth) {
+      // 特定の条件に基づいてコピーする列の終了位置までのデータをコピー
+      var rowData = data[i].slice(0, endCol);
+      toSheet.appendRow(rowData);
+    }
+  }
+}
+// 空でない最初のセルから終了位置を見つける
+function findEndColumn(data) {
+  for (var i = 0; i < data[0].length; i++) {
+    if (data[0][i] === "") {
+      return i;
+    }
+  }
+  // 終了位置が見つからない場合は、デフォルトの終了位置を返す
+  return 4; // デフォルトの終了位置
+}
+
+
+   
+   
+   
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /* 
+    for(var i=5;;i++)//i を初期値 5 で定義。ループ毎にインクリメント// 予定シートの行ヘッダが空白の場合。行ヘッダが空であるか、あるいはセルの日付が end よりも後の場合、ループを抜ける。同じセルの値を日付として解釈し、その日付が end よりも後の日付であるかどうかを比較。
     if(fromsheet.getRange(1, i).getValue() === '' ||
     Utilities.formatDate(fromsheet.getRange(1, i).getValue(), 'JST', 'yyyy/MM/dd') > Utilities.formatDate(end, 'JST', 'yyyy/MM/dd'))
     {
@@ -27,7 +73,7 @@ console.log("Cell value:", cellValue, typeof cellValue);
 
   // 特定の範囲の列削除。第1引数 4 は削除を開始する列のインデックス。この場合、4列目から削除が開始。第2引数 endCol - 3 は削除する列の数。endCol はループで特定された終了列の値で、それから3を引いてる。削除される列の数が計算されている
   fromsheet.deleteColumns(4, endCol - 3);
-}
+}*/
 /*
 // wrapper関数の使用　現在の月。addSumCol 関数が gSheetNamePlan シートからデータを取得し、それを gSheetNameResult シートに追加処理を行いながら書き込む
 function addSumColWrapper() {
@@ -105,6 +151,3 @@ function addSumCol(fromSheetName, toSheetName, month)
   // Toで対象行検索→今後addsumcolの機能を拡張するかもしれません
 }
 }*/
-// すべてが0の行を削除
-function delNaNRow()
-{}
