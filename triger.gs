@@ -7,6 +7,16 @@ function setTrigger() {
     Logger.log('重複するトリガーを削除しました。');
   }
 */
+// 現在の日付を取得
+  var now = new Date();
+  // 今月の1日の日付を作成
+  var firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+  // 今月の1日の0時0分0秒に設定
+  firstDayOfMonth.setHours(0);
+  firstDayOfMonth.setMinutes(0);
+  firstDayOfMonth.setSeconds(0);
+  
+
   // 予定機能を24時間に１回行うトリガーの設定。
   ScriptApp.newTrigger('plan_recordTimeEntries')
     .timeBased()
@@ -23,5 +33,12 @@ function setTrigger() {
     .everyDays(1)  // 毎日実行
     .create();
 
-  Logger.log('実績抽出を２４時間毎に繰り返すトリガーが設定されました。');
+   ScriptApp.newTrigger('planDays_copyData') // 実行する関数を指定
+    .timeBased() // 時間ベースのトリガーを作成
+    .at(firstDayOfMonth) // 毎月1日の0時0分0秒に設定
+    .create(); // トリガーを作成する
+
+  Logger.log('予定抽出転記（日毎）を毎月１日毎に繰り返すトリガーが設定されました。');
 }
+
+ 

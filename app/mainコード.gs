@@ -179,8 +179,8 @@ var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() +
   //既存トリガーの削除と、24時間に１回予実抽出を実行するトリガーをセット
   setTrigger();
 
-  /*予定から１ヶ月分の日毎のデータを抽出し、予定(日毎)タブに情報を書き込む。
-  planDays_copyData(fromSheetName, toSheetName, end)*/
+  //予定から１ヶ月分の日毎のデータを抽出し、予定(日毎)タブに情報を書き込む。
+  planDays_copyData(fromSheetName, toSheetName)
   /*もしstartDateが1日の場合、新しい月の最初の日の場合に以下の処理を実行
   if(startDate.getDate() === 1)
   {

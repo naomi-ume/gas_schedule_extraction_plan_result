@@ -1,10 +1,9 @@
-// 予定タブから先月分の予定を１ヶ月分コピー。
-//指定された2つのスプレッドシート間でデータをコピーするための関数。fromSheetName: コピー元のシート名toSheetName: コピー先のシート名end: 特定の条件に基づいてコピーする列の終了位置
-function planDays_copyData(fromSheetName, toSheetName, end)
+// 予定タブから前月の予定を１ヶ月分取得。
+//指定された2つのスプレッドシート間でデータをコピーするための関数。fromSheetName: コピー元のシート名toSheetName: コピー先のシート名　終了位置を特定するために、　　　　　　　　　　　　　　　最初の行のデータから空でないセルを検索し、その列の数を終了位置として扱う。
+function planDays_copyData(fromSheetName, toSheetName)
 {
   var fromsheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNamePlan);//コピー元の予定シートを開く
   var tosheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNamePlanDays);//コピー先の予定(日毎)シートを開く
-  var endCol = 4;//列の終了の初期値を４で設定
 
   for(var i=5;;i++)//i を初期値 5 で定義。ループ毎にインクリメント
   {
@@ -108,22 +107,4 @@ function addSumCol(fromSheetName, toSheetName, month)
 }*/
 // すべてが0の行を削除
 function delNaNRow()
-{
-  //今月の実績シートを開く
-  var sheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNameToMonthResult);
-  //変数iを初期値1で宣言し、無限ループを開始。スプレッドシートの i 行目、1列目のセルの値を取得。もしセルの値が空白であれば（=== '' は空白）、break文によりループを終了。
-  for(var i=1;;i++)
-  {
-    if(sheet.getRange(i, 1).getValue() === '')
-    {
-      break;
-    }
-  //3列目のセルの値が0でない場合に入る条件文。
-    if(sheet.getRange(i, 3).getValue() != 0)
-    {
-      sheet.deleteRow(i);//deleteRow メソッドを使用して、i 行目の行を削除
-      i--;//行を削除した後、同じ行を再度チェックするために i をデクリメント（1減らす）
-      continue;//ループの次のイテレーションに進む
-    }
-  }
-}
+{}
