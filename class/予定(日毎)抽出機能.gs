@@ -2,10 +2,12 @@
 //指定された2つのスプレッドシート間でデータをコピーするための関数。fromSheetName: コピー元のシート名toSheetName: コピー先のシート名　終了位置を特定するために、　　　　　　　　　　　　　　　最初の行のデータから空でないセルを検索し、その列の数を終了位置として扱う。
 function planDays_copyData(fromSheetName, toSheetName)
 {
-  var fromsheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNamePlan);//コピー元の予定シートを開く
-  var tosheet = SpreadsheetApp.openById(gSheetId).getSheetByName(gSheetNamePlanDays);//コピー先の予定(日毎)シートを開く
+  var fromSheetName = gSheetNamePlan; // コピー元のシート名を指定
+  var toSheetName = gSheetNamePlanDays; // コピー先のシート名を指定
+  var fromsheet = SpreadsheetApp.openById(gSheetId).getSheetByName(fromSheetName);//コピー元の予定シートを開く
+  var tosheet = SpreadsheetApp.openById(gSheetId).getSheetByName(toSheetName);//コピー先の予定(日毎)シートを開く
   var today = new Date();//現在の日付の取得
-  var firstDayOfLastMonth = new Date(today.getFullYear(), today.getMonth() -4,1);//先月の初日を取得
+  var firstDayOfLastMonth = new Date(today.getFullYear(), today.getMonth() -1,1);//先月の初日を取得
   var lastDayOfLastMonth = new Date(today.getFullYear(), today.getMonth(), 0);//先月の最後の日を取得
   var data = fromsheet.getDataRange().getValues();//コピー元のデータ取得
   var endCol = findEndColumn(data);//終了位置を見つける
@@ -17,7 +19,8 @@ function planDays_copyData(fromSheetName, toSheetName)
     if (rowDate >= firstDayOfLastMonth && rowDate <= lastDayOfLastMonth) {
       // 特定の条件に基づいてコピーする列の終了位置までのデータをコピー
       var rowData = data[i].slice(0, endCol);
-      toSheet.appendRow(rowData);
+      tosheet.appendRow(rowData);
+        Logger.log('前月の予定(日毎)を転記しました。');
     }
   }
 }
