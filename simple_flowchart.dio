@@ -107,9 +107,6 @@
                 <mxCell id="39" value="&lt;font color=&quot;#000000&quot;&gt;毎月、予定・実績の&lt;br&gt;区分１:区分2:が0の行を削除する&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;fillColor=#ABF9FF;strokeWidth=2;strokeColor=none;" parent="1" vertex="1">
                     <mxGeometry x="581" y="220" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="43" value="" style="shape=waypoint;sketch=0;size=6;pointerEvents=1;points=[];fillColor=#C9F1FF;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="631" y="380" width="20" height="20" as="geometry"/>
-                </mxCell>
                 <mxCell id="69" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#FF8000;" parent="1" source="56" target="26" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
@@ -131,7 +128,7 @@
                 <mxCell id="66" value="終了" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;strokeColor=none;fontColor=#000000;fillColor=#FCE0FF;" parent="1" vertex="1">
                     <mxGeometry x="591" y="400" width="100" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="73" value="修正箇所は赤文字です。" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#e92b2b;" vertex="1" parent="1">
+                <mxCell id="73" value="修正箇所は赤文字です。" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#e92b2b;" parent="1" vertex="1">
                     <mxGeometry x="3" width="133" height="30" as="geometry"/>
                 </mxCell>
             </root>

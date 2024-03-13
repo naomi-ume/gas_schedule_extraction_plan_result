@@ -1,0 +1,174 @@
+<mxfile host="65bd71144e">
+    <diagram id="EOn-nbgeJf4J-93F_MQr" name="ページ1">
+        <mxGraphModel dx="808" dy="692" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 17px;&quot;&gt;予定削除機能&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=17;" vertex="1" parent="1">
+                    <mxGeometry x="383.5" y="160" width="206.5" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1" source="4" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="開始" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#000000;fillColor=#FCE0FF;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="240" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_1;align=left;pointerEvents=1;dashed=1;labelBackgroundColor=none;strokeColor=#00FF80;fontSize=12;fontColor=#000000;fillColor=#CCFFE6;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="270" width="240" height="850" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="7">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="500" y="660" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8" value="&lt;div style=&quot;text-align: left;&quot;&gt;・予定シートのデータを取得&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#EBF4EB;strokeColor=none;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="410" y="380" width="180" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="500" y="460" as="sourcePoint"/>
+                        <mxPoint x="500" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="YES" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="500" y="760" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=process;whiteSpace=wrap;rounded=1;size=0.14;arcSize=6;fontColor=#000000;fillColor=#00FF80;" vertex="1" parent="1">
+                    <mxGeometry x="205" y="240" width="170" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="予定削除機能&lt;br&gt;planDelite" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;labelBackgroundColor=none;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="225" y="250" width="130" height="67.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 17px;&quot;&gt;実績削除機能&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=17;" vertex="1" parent="1">
+                    <mxGeometry x="1358.5" y="160" width="206.5" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="開始" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#000000;fillColor=#FCE0FF;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="1395" y="240" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=process;whiteSpace=wrap;rounded=1;size=0.14;arcSize=6;fontColor=#000000;fillColor=#00FF80;" vertex="1" parent="1">
+                    <mxGeometry x="1174" y="240" width="170" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_1;align=left;pointerEvents=1;dashed=1;labelBackgroundColor=none;strokeColor=#00FF80;fontSize=12;fontColor=#000000;fillColor=#CCFFE6;" vertex="1" parent="1">
+                    <mxGeometry x="1155" y="270" width="240" height="850" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: initial;&quot;&gt;・各行に対してループ処理&lt;/span&gt;&lt;/div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;・i = 0 ; i &amp;lt; rowCount ; i ++&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.loop_limit;whiteSpace=wrap;fillColor=#FF99FF;" vertex="1" parent="1">
+                    <mxGeometry x="375" y="520" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="・もしも区分１と区分２の合計が０だったら" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fontColor=#000000;fillColor=#EBF4EB;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="660" width="260" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="500" y="760" as="sourcePoint"/>
+                        <mxPoint x="500" y="830" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="33" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.536;entryY=-0.067;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="7">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="630" y="710" as="sourcePoint"/>
+                        <mxPoint x="630" y="510" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="680" y="710"/>
+                            <mxPoint x="680" y="516"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" value="&lt;div style=&quot;text-align: left;&quot;&gt;・合計が０の場合、行を削除&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;・次の行へ　(i++)&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#EBF4EB;strokeColor=none;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="414" y="830" width="180" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="500" y="910" as="sourcePoint"/>
+                        <mxPoint x="500" y="970" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="36" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;・全ての行に対する処理が完了したら終了&lt;/font&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.loop_limit;whiteSpace=wrap;fillColor=#FF99FF;direction=west;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="970" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="NO" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="720" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="500" y="1030" as="sourcePoint"/>
+                        <mxPoint x="500" y="1090" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" value="終了" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#000000;fillColor=#FCE0FF;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="1090" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1" target="57">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1474" y="300" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="56" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="60">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1474" y="660" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="57" value="&lt;div style=&quot;text-align: left;&quot;&gt;・実績シートのデータを取得&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#EBF4EB;strokeColor=none;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="1384" y="380" width="180" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1474" y="460" as="sourcePoint"/>
+                        <mxPoint x="1474" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="59" value="YES" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1474" y="760" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: initial;&quot;&gt;・各行に対してループ処理&lt;/span&gt;&lt;/div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;・i = 0 ; i &amp;lt; rowCount ; i ++&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.loop_limit;whiteSpace=wrap;fillColor=#FF99FF;" vertex="1" parent="1">
+                    <mxGeometry x="1349" y="520" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="・もしも区分１と区分２の合計が０だったら" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fontColor=#000000;fillColor=#EBF4EB;" vertex="1" parent="1">
+                    <mxGeometry x="1344" y="660" width="260" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1474" y="760" as="sourcePoint"/>
+                        <mxPoint x="1474" y="830" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="63" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.536;entryY=-0.067;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="60">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="1604" y="710" as="sourcePoint"/>
+                        <mxPoint x="1604" y="510" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1654" y="710"/>
+                            <mxPoint x="1654" y="516"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="64" value="&lt;div style=&quot;text-align: left;&quot;&gt;・合計が０の場合、行を削除&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;・次の行へ　(i++)&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#EBF4EB;strokeColor=none;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="1388" y="830" width="180" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1474" y="910" as="sourcePoint"/>
+                        <mxPoint x="1474" y="970" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="66" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;・全ての行に対する処理が完了したら終了&lt;/font&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.loop_limit;whiteSpace=wrap;fillColor=#FF99FF;direction=west;" vertex="1" parent="1">
+                    <mxGeometry x="1354" y="970" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="NO" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1584" y="720" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1474" y="1030" as="sourcePoint"/>
+                        <mxPoint x="1474" y="1090" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="69" value="終了" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#000000;fillColor=#FCE0FF;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="1394" y="1090" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="実績削除機能&lt;br&gt;resultDelite" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;labelBackgroundColor=none;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1194" y="250" width="130" height="67.5" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -1,0 +1,202 @@
+<mxfile host="65bd71144e">
+    <diagram id="nZiJsLfwibDNf8lwQtI2" name="ページ1">
+        <mxGraphModel dx="808" dy="692" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 17px;&quot;&gt;トリガー(１回/２４時間)機能&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=17;" vertex="1" parent="1">
+                    <mxGeometry x="383.5" y="160" width="226.5" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1" source="4">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="500" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="開始" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#000000;fillColor=#FCE0FF;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="240" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_1;align=left;pointerEvents=1;dashed=1;labelBackgroundColor=none;strokeColor=#00FF80;fontSize=12;fontColor=#000000;fillColor=#CCFFE6;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="270" width="290" height="980" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=process;whiteSpace=wrap;rounded=1;size=0.14;arcSize=6;fontColor=#000000;fillColor=#00FF80;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="209" width="200" height="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;・重複設定防止のためトリガー削除&lt;/font&gt;&lt;/div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;・i = 0 ; i &amp;lt;triggers.length ; i ++&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.loop_limit;whiteSpace=wrap;fillColor=#FF99FF;" vertex="1" parent="1">
+                    <mxGeometry x="375" y="520" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="500" y="460" as="sourcePoint"/>
+                        <mxPoint x="500" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="・もし重複するトリガーが設定されていたら" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fontColor=#000000;fillColor=#EBF4EB;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="370" width="260" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="YES" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="510" y="470" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="10">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="790" y="710" as="sourcePoint"/>
+                        <mxPoint x="510" y="865" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="720" y="420"/>
+                            <mxPoint x="720" y="865"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="7">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="510" y="470" as="sourcePoint"/>
+                        <mxPoint x="500" y="630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="&lt;div style=&quot;text-align: left;&quot;&gt;・トリガーの削除&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;・重複したトリガーを削除したことを画面表示する&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#EBF4EB;strokeColor=none;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="630" width="260" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="500" y="710" as="sourcePoint"/>
+                        <mxPoint x="500" y="760" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;・重複トリガーを全て削除して終了&lt;/font&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.loop_limit;whiteSpace=wrap;fillColor=#FF99FF;direction=west;" vertex="1" parent="1">
+                    <mxGeometry x="375" y="760" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.448;entryY=-0.031;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="18">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="510" y="720" as="sourcePoint"/>
+                        <mxPoint x="499.9200000000001" y="867.52" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="NO" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="380" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="24時間に１回のトリガー&lt;br&gt;setDailyTrigger" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="230" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;・毎日24時にトリガーを実行する設定をする。&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️予定抽出・集計機能&lt;/div&gt;&lt;span style=&quot;&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;　▪️実績抽出・集計機能&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#EBF4EB;strokeColor=none;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="870" width="260" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="33">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="497" y="970" as="sourcePoint"/>
+                        <mxPoint x="500" y="1000" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="67" value="" style="edgeStyle=none;html=1;fontColor=#000000;" edge="1" parent="1" source="33" target="35">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="&lt;div style=&quot;text-align: left;&quot;&gt;・トリガー実行後に、実行済みのログの表示&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　&lt;span style=&quot;background-color: initial;&quot;&gt;▪️予定抽出・集計機能&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;　▪️実績抽出・集計機能&lt;/span&gt;&lt;/div&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#EBF4EB;strokeColor=none;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="366.75" y="1020" width="260" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 17px;&quot;&gt;トリガー(１回/毎月1日)機能&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=17;" vertex="1" parent="1">
+                    <mxGeometry x="1133.5" y="160" width="236.5" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1" source="39">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1250" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" value="開始" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#000000;fillColor=#FCE0FF;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="1170" y="240" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_1;align=left;pointerEvents=1;dashed=1;labelBackgroundColor=none;strokeColor=#00FF80;fontSize=12;fontColor=#000000;fillColor=#CCFFE6;" vertex="1" parent="1">
+                    <mxGeometry x="900" y="270" width="270" height="990" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=process;whiteSpace=wrap;rounded=1;size=0.14;arcSize=6;fontColor=#000000;fillColor=#00FF80;" vertex="1" parent="1">
+                    <mxGeometry x="923.5" y="212.5" width="210" height="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;・重複設定防止のためトリガー削除&lt;/font&gt;&lt;/div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;・i = 0 ; i &amp;lt;triggers.length ; i ++&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.loop_limit;whiteSpace=wrap;fillColor=#FF99FF;" vertex="1" parent="1">
+                    <mxGeometry x="1125" y="520" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1250" y="460" as="sourcePoint"/>
+                        <mxPoint x="1250" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="44" value="・もし重複するトリガーが設定されていたら" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fontColor=#000000;fillColor=#EBF4EB;" vertex="1" parent="1">
+                    <mxGeometry x="1120" y="370" width="260" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="YES" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1260" y="470" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="44">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="1540" y="710" as="sourcePoint"/>
+                        <mxPoint x="1260" y="865" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1470" y="420"/>
+                            <mxPoint x="1470" y="865"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="42">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1260" y="470" as="sourcePoint"/>
+                        <mxPoint x="1250" y="630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="&lt;div style=&quot;text-align: left;&quot;&gt;・トリガーの削除&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;・重複したトリガーを削除したことを画面表示　　する&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#EBF4EB;strokeColor=none;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="1120" y="630" width="260" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1250" y="710" as="sourcePoint"/>
+                        <mxPoint x="1250" y="760" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="50" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;・重複トリガーを全て削除して終了&lt;/font&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.loop_limit;whiteSpace=wrap;fillColor=#FF99FF;direction=west;" vertex="1" parent="1">
+                    <mxGeometry x="1125" y="760" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.448;entryY=-0.031;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="50" target="56">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1260" y="720" as="sourcePoint"/>
+                        <mxPoint x="1250" y="860" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="52" value="NO" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1360" y="380" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="毎月1日に&lt;br&gt;１回のトリガー&lt;br&gt;setMonthlyTrigger" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="933" y="236.5" width="195" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;・月末の24時に下記を実行するトリガーを設定する&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️予定(日毎)の転記&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️実績(日毎)の転記&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️予定(集計)の集計転記&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️実績(集計)の集計転記&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️予定の合計０の行削除&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️実績の合計０の行削除&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　　&lt;/div&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%22%20style%3D%22edgeStyle%3Dnone%3BorthogonalLoop%3D1%3BjettySize%3Dauto%3Bhtml%3D1%3BstrokeColor%3D%23000000%3BfontColor%3D%23000000%3BexitX%3D1%3BexitY%3D0.5%3BexitDx%3D0%3BexitDy%3D0%3BexitPerimeter%3D0%3B%22%20edge%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20width%3D%2280%22%20relative%3D%221%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%221380%22%20y%3D%22420%22%20as%3D%22sourcePoint%22%2F%3E%3CmxPoint%20x%3D%221260%22%20y%3D%22865%22%20as%3D%22targetPoint%22%2F%3E%3CArray%20as%3D%22points%22%3E%3CmxPoint%20x%3D%221470%22%20y%3D%22420%22%2F%3E%3CmxPoint%20x%3D%221470%22%20y%3D%22865%22%2F%3E%3C%2FArray%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3&lt;br&gt;&lt;/span&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#EBF4EB;strokeColor=none;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="1120" y="870" width="290" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="終了" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#000000;fillColor=#FCE0FF;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="1220" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="35">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="500" y="1110" as="sourcePoint"/>
+                        <mxPoint x="510" y="1010" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="70" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;exitX=0.448;exitY=1.004;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="56">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1260" y="1000" as="sourcePoint"/>
+                        <mxPoint x="1250" y="1050" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="71" value="&lt;div style=&quot;text-align: left;&quot;&gt;・トリガー実行後に、実行済みのログの表示&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️予定(日毎)の転記&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️実績(日毎)の転記&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️予定(集計)の集計転記&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️実績(集計)の集計転記&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️予定の合計０の行削除&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;　▪️実績の合計０の行削除&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#EBF4EB;strokeColor=none;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="1125" y="1050" width="260" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" value="" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1250" y="1180" as="sourcePoint"/>
+                        <mxPoint x="1250" y="1230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="73" value="終了" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#000000;fillColor=#FCE0FF;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="1171.75" y="1230" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="⚫︎トリガー実行のタイミングについては、main methodで指定します。" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="144" y="1371" width="523" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
