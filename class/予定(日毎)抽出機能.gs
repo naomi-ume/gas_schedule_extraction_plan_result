@@ -7,7 +7,7 @@ function planDays_copyData(fromSheetName, toSheetName)
   var fromsheet = SpreadsheetApp.openById(gSheetId).getSheetByName(fromSheetName);//コピー元の予定シートを開く
   var tosheet = SpreadsheetApp.openById(gSheetId).getSheetByName(toSheetName);//コピー先の予定(日毎)シートを開く
   var today = new Date();//現在の日付の取得
-  var firstDayOfLastMonth = new Date(today.getFullYear(), today.getMonth() -1,1);//先月の初日を取得
+  var firstDayOfLastMonth = new Date(today.getFullYear(), today.getMonth() -5,1);//先月の初日を取得
   var lastDayOfLastMonth = new Date(today.getFullYear(), today.getMonth(), 0);//先月の最後の日を取得
   var data = fromsheet.getDataRange().getValues();//コピー元のデータ取得
   var endCol = findEndColumn(data);//終了位置を見つける
@@ -16,25 +16,18 @@ function planDays_copyData(fromSheetName, toSheetName)
   // 先月分の予定をコピー
   for (var i = 0; i < data.length; i++) {
     var rowDate = new Date(data[i][0]); // 予定シートの日付列をDate型に変換
-    if (rowDate >= firstDayOfLastMonth && rowDate <= lastDayOfLastMonth) {
-      // 特定の条件に基づいてコピーする列の終了位置までのデータをコピー
-      var rowData = data[i].slice(0, endCol);
-      tosheet.appendRow(rowData);
+    var rowData = data[i].slice(0, endCol);//終了位置までのデータを取得
+      tosheet.appendRow(rowData);//既存データの最終行の次の行からコピー先のシートに追加
         Logger.log('前月の予定(日毎)を転記しました。');
     }
   }
-}
-// 空でない最初のセルから終了位置を見つける
 function findEndColumn(data) {
   for (var i = 0; i < data[0].length; i++) {
     if (data[0][i] === "") {
       return i;
     }
   }
-  // 終了位置が見つからない場合は、デフォルトの終了位置を返す
-  return 4; // デフォルトの終了位置
-}
-
+ 
 
    
    
@@ -153,4 +146,6 @@ function addSumCol(fromSheetName, toSheetName, month)
 
   // Toで対象行検索→今後addsumcolの機能を拡張するかもしれません
 }
-}*/
+}
+*/ 
+}
