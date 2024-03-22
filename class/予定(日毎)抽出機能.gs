@@ -15,7 +15,6 @@ function planDays_copyData(fromSheetName, toSheetName)
 
 // 先月分の予定をコピー
 for (var i = 0; i < data.length; i++) {
-  var rowDate = new Date(data[i][0]); // 予定シートの日付列をDate型に変換
   var rowData = data[i].slice(0, endCol);//終了位置までのデータを取得
   tosheet.appendRow(rowData);//既存データの最終行の次の行からコピー先のシートに追加
   Logger.log('前月の予定(日毎)を転記しました。');
