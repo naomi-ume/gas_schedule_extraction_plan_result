@@ -39,6 +39,14 @@ function setTrigger() {
     .create(); // トリガーを作成する
 
   Logger.log('予定抽出転記（日毎）を毎月１日毎に繰り返すトリガーが設定されました。');
+
+
+   ScriptApp.newTrigger('resultDays_copyData') // 実行する関数を指定
+    .timeBased() // 時間ベースのトリガーを作成
+    .at(firstDayOfMonth) // 1日の0時0分0秒に設定
+    .create(); // トリガーを作成する
+
+  Logger.log('実績抽出転記（日毎）を毎月１日毎に繰り返すトリガーが設定されました。');
 }
 
  
