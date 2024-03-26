@@ -11,22 +11,65 @@ function planDays_copyData(fromSheetName, toSheetName)
   var lastDayOfLastMonth = new Date(today.getFullYear(), today.getMonth(), 0);//先月の最後の日を取得
   var data = fromsheet.getDataRange().getValues();//コピー元のデータ取得
   var endCol = findEndColumn(data);//終了位置を見つける
-  var lastRow = tosheet.getLastRow();//コピー先の最終行を取得
+  var lastColumn = tosheet.getLastColumn();//コピー先の最終列を取得
+  /*var numOfLastMonth = getLastDay(today.getFullYear()-1,today.getMonth());//前月の最終日 */
 
-// 先月分の予定をコピー
-for (var i = 0; i < data.length; i++) {
-  var rowData = data[i].slice(0, endCol);//終了位置までのデータを取得
-  tosheet.appendRow(rowData);//既存データの最終行の次の行からコピー先のシートに追加
-  Logger.log('前月の予定(日毎)を転記しました。');
-}
-  }
-  function findEndColumn(data) {
-  for (var i = 0; i < data[0].length; i++) {
-    if (data[0][i] === "") {
-      return i;
+  // コピー先シートでの最終行を取得
+  var lastRow = tosheet.getLastRow();
+  // コピー先のデータが空の場合、最初からデータを転記する
+  if (lastRow === 0) {
+    for (var i = 0; i < data.length; i++) {
+      var rowData = data[i].slice(0, endCol); // 終了位置までのデータを取得
+      tosheet.appendRow(rowData); // 新しいデータを追記
+    }
+  } else {
+  // コピー先のデータを配列として取得
+  var tosheetData = tosheet.getRange(1, 1, lastRow, lastColumn).getValues();
+
+  // 先月分の予定をコピー
+  for (var i = 0; i < data.length; i++) {
+    var found = false;
+    var rowData = data[i].slice(0, endCol); // 終了位置までのデータを取得
+
+    // コピー先のデータを検索して、重複するデータがあるか確認
+    for (var j = 0; j < tosheetData.length; j++) {
+      if (arraysEqual(rowData, tosheetData[j])) {
+        // 重複するデータが見つかった場合は更新
+        tosheet.insertColumnAfter(lastColumn, numOfLastMonth)
+        tosheet.getRange(j + 1, lastColumn).setValues([[rowData]]); // 既存データの更新
+        found = true;
+        break;
+      }
+    }
+
+    // 重複するデータが見つからなかった場合は新しいデータとして追加
+    
+    if (!found) {
+      tosheet.getRange(lastRow,lastColumn + 1, 1, rowData.length).setValues([rowData]); // 新しいデータを追記
+      lastRow++; // 最終行の更新
     }
   }
- 
+
+  Logger.log('前月の予定(日毎)を転記しました。');
+}
+
+// 2つの配列が等しいかどうかを比較するユーティリティ関数
+function arraysEqual(arr1, arr2) {
+  if (arr1.length !== arr2.length) return false;
+  for (var i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) return false;
+  }
+  return true;
+}
+// コピー元のデータから終了位置を見つけるための関数
+function findEndColumn(data) {
+    for (var i = data[0].length - 1; i >= 0; i--) {
+      if (data[0][i] === "") {
+      return i;
+      }
+    }
+  }
+}
 
    
   
@@ -147,4 +190,4 @@ function addSumCol(fromSheetName, toSheetName, month)
 }
 }
 */ 
-  }
+ 
