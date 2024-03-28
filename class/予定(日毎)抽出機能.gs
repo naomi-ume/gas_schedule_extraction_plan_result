@@ -12,7 +12,7 @@ function planDays_copyData(fromSheetName, toSheetName)
   var data = fromsheet.getDataRange().getValues();//コピー元のデータ取得
   var endCol = findEndColumn(data);//終了位置を見つける
   var lastColumn = tosheet.getLastColumn();//コピー先の最終列を取得
-  /*var numOfLastMonth = getLastDay(today.getFullYear()-1,today.getMonth());//前月の最終日 */
+  var numOfLastMonth = getLastDay(today.getFullYear()-1,today.getMonth());//前月の最終日 
 
   // コピー先シートでの最終行を取得
   var lastRow = tosheet.getLastRow();
@@ -23,7 +23,7 @@ function planDays_copyData(fromSheetName, toSheetName)
       tosheet.appendRow(rowData); // 新しいデータを追記
     }
   } else {
-  // コピー先のデータを配列として取得
+  // コピー先のデータを配列として取得。コピー先のシートから左上のセル（1行目、1列目）から始まり、最終行 lastRow および最終列 lastColumn までの範囲のデータを取得
   var tosheetData = tosheet.getRange(1, 1, lastRow, lastColumn).getValues();
 
   // 先月分の予定をコピー
